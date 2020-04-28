@@ -1,4 +1,9 @@
 #!/bin/bash
+if [ $# -ne 0 ]
+then
+	echo "No parameters needed" 
+fi
+
 if [ $EUID -ne 0 ]
 then 
 	echo "This script should be executed by root"
