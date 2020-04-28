@@ -1,7 +1,7 @@
 #!/bin/bash
 if [ ! -d $1 ]
 then
-	echo you should add a directory as parameter
+	echo "You should add a directory as parameter"
 fi
 
 directory=$1
