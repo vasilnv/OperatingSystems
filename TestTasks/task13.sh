@@ -2,11 +2,13 @@
 if [ $# -ne 1 ]
 then
 	echo "Invalid number of arguments"
+	exit 1
 fi
 
 if [ ! -d $1 ]
 then
 	echo "You should add a directory as parameter"
+	exit 1
 fi
 
 directory=$1
