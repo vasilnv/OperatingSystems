@@ -1,4 +1,9 @@
 #!/bin/bash
+if [ $# -ne 1 ]
+then
+	echo "Invalid number of arguments"
+fi
+
 if [ ! -d $1 ]
 then
 	echo "You should add a directory as parameter"
