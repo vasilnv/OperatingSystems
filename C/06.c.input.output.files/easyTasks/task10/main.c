@@ -18,8 +18,8 @@ int main(int argc, char* argv[] )
         err(2, "failed to open");
     }
 
-    char c;
-    char max;
+    uint8_t c;
+    uint8_t max;
     ssize_t read_size;
     while((read_size = read(fd, &c, 1)) == 1)
     {
@@ -29,5 +29,5 @@ int main(int argc, char* argv[] )
         }
     }
 
-    printf("%d\n", max);
+    printf("%x\n", max);
 }
