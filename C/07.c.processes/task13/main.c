@@ -11,6 +11,7 @@ int main(int argc, char* argv[])
 	{
 		errx(1, "wrong number of parameters");
 	}
+	
 	int p1 = fork();
 	int p2 = fork();
 
@@ -28,7 +29,7 @@ int main(int argc, char* argv[])
 	pid_t pid1 = wait(&status1);
     pid_t pid2 = wait(&status2);
 	
-	if ( WIFEXITED(status1))
+	if (WIFEXITED(status1))
 	{
 		printf("%d, cmd: %s\n", pid1, argv[1]);
 		wait(&status2);
@@ -44,5 +45,4 @@ int main(int argc, char* argv[])
 	}
 		
 	exit(0);
-
 }
