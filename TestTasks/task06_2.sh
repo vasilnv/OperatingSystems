@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -type f -printf "%s %f\n" | sort -nr | cut -d ' ' -f2 | head -n +2 | xargs rm 
+find /home/$whoami -type f -printf "%f %s\n" | sort -t ' ' -k2 -nr | head -n 5 | cut -d ' ' -f 1 | xargs rm 
