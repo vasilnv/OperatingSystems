@@ -11,6 +11,7 @@ do
 		count=$(ls -l "$i" | wc -l)
 		if [ $count -eq 1 ] 
 		then
+			# we check $count == 1 because ls -l will print total 0 if dir is empty
 			echo "removed dir $i" >> logs.txt
 			rmdir "$i"
 		fi
