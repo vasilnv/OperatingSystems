@@ -3,16 +3,17 @@ searched=$1
 left=$2
 right=$3
 for i in $@ 
-do if ! [[ $i =~ ^[-0-9]+$ ]] 
-	then
-	echo not a number
-	exit 3
-fi
+do 
+	if ! [[ $i =~ ^[0-9]+$ ]] 
+		then
+		echo not a number
+		exit 3
+	fi
 done
 
 if [ $left -gt $right ]
 then
-	echo argument 2 shoul be less or equal to argument 3
+	echo argument 2 should be less or equal to argument 3
 	exit 2
 fi
 
