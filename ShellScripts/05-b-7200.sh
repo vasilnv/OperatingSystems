@@ -1,7 +1,6 @@
 #!/bin/bash
-#05-b-7200
 file=$1
-if [ -f "$file" ] 
+if [ -f "$file" ] && [ -r "$file" ]
 then
 	echo this is readable file
 	exit 0
@@ -11,7 +10,7 @@ if [ -d "$file" ]
 then
 	echo this is directory
 	otherFiles=$(find "$file" -type f -printf "%f %s\n")
-	echo "$otherFiles" | while read i
+	while read i
 	do
 		name=$(echo "$i" | cut -d ' ' -f1)
 		size=$(echo "$i" | cut -d ' ' -f2)
@@ -20,5 +19,5 @@ then
 		then 
 			echo "$name"
 		fi
-	done
+	done < <(echo "$otherFiles")
 fi
