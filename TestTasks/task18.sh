@@ -5,4 +5,4 @@ then
 	exit 1
 fi
 
-find /home/ -type f -printf "%u %p %As\n" | sort -nk3 | grep ^grade | tail -n 1 | cut -d ' ' -f1,2
+find /home/ -type f -printf "%u %p %Ts\n" | sort -nk3 | grep ^grade | tail -n 1 | cut -d ' ' -f1,2
