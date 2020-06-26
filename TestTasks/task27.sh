@@ -1,26 +1,22 @@
 #!/bin/bash
-if [ $# -ne 1 ]
+if [ $# -ne 2 ]
 then
 	echo wrong number of parameters
+	exit 1
+fi
+
+if [ ! -f $1 ] || [ ! -r $1 ]
+then
+	echo first parameter should be readable file
 fi
 
 input=$1
+dst=$2
+
 touch b.csv
-allInfo=$(cat ${input} | cut -d, -f2-)
+allInfo=$(cat ${input} | cut -d, -f2- | sort | uniq)
+
 while read line
 do
-	info=$(echo "${line}" | cut -d, -f2-)
-	numOfLines=$(echo "${allInfo}" | grep "^${info}$" | wc -l)
-	if [ ${numOfLines} -eq 1 ]
-	then
-		echo "${line}" >> b.csv
-	elif [ ${numOfLines} -gt 1 ]
-	then
-		isin=$(cat b.csv | grep "${info}" | wc -l)
-		if [ "${isin}" -eq 0 ]
-		then
-			echo i am here
-			cat "${input}" | grep "${info}" | sort -n -t, -k1 | head -n 1 >> b.csv
-		fi
-	fi 
-done < <(cat "${input}")
+	cat "${input}" | grep "${line}" | sort -n -t, -k1 | head -n 1 >> "${dst}"
+done < <(echo "${allInfo}")
